@@ -69,9 +69,9 @@ class MyFraction(numbers.Rational):
 
                 if r is not None:
                     numerator = numerator.replace("(", ".").replace(")", "")
-                    a, b, c = numerator.split('.')
-                    self._numerator = int(a + b + c) - bool(c) * int(a + b)
-                    self._denominator = (10 ** len(c) - bool(c)) * 10 ** len(b)
+                    ceil, after_comma_before_period, period = numerator.split('.')
+                    self._numerator = int(ceil + after_comma_before_period + period) - bool(period) * int(ceil + after_comma_before_period)
+                    self._denominator = (10 ** len(period) - bool(period)) * 10 ** len(after_comma_before_period)
                     return self
 
                 m = _RATIONAL_FORMAT.match(numerator)
